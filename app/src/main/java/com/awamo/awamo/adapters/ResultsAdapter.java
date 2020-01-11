@@ -1,12 +1,14 @@
 package com.awamo.awamo.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.awamo.awamo.R;
@@ -22,9 +24,11 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView numberone, numbertwo,response, expected,pased;
         public ImageView  overflow;
+        CardView card_view_result;
 
         public MyViewHolder(View view) {
             super(view);
+            card_view_result = view.findViewById(R.id.card_view_result);
             numberone = view.findViewById(R.id.number1);
             numbertwo = view.findViewById(R.id.number2);
             response = view.findViewById(R.id.response);
@@ -57,11 +61,17 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.MyViewHo
         holder.response.setText("Response : "+res.getResponse());
         holder.pased.setText("Passed : "+res.getPassed());
 
+        String str = "No";
+
+        if(res.getPassed().equals(str)){
+            holder.card_view_result.setCardBackgroundColor(Color.RED);
+        }else{
+            holder.card_view_result.setCardBackgroundColor(Color.YELLOW);
+        }
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 resultList.remove(holder.getAdapterPosition());
                 notifyItemRemoved(holder.getAdapterPosition());
                 notifyItemRangeChanged(holder.getAdapterPosition(), resultList.size());
