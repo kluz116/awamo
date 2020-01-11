@@ -2,4 +2,4 @@ Simple calculator Android App that sends an http post request to http://api.math
 
 Screenshoot of the UI can be found here. 
 
-https://github.com/kluz116/awamo/blob/master/app/src/main/res/drawable/awamo.png
+https://github.com/kluz116/awamo/blob/master/app/src/main/res/drawable/screen.png
